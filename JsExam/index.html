@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="gridView.js"></script>
+    <style type="text/css">
+         table{
+            width:400px;
+         }
+         #header td{
+             background-color: darkgray;
+         }
+   
+        tr td {
+           
+            background-color:#eee;
+            width:50px;
+        }
+
+        #innerTable #header td{
+            background-color:#eee888;
+        }
+    </style>
+</head>
+<body>
+    <div id="#grid-view-holder">
+    </div>
+    <script type="text/javascript">
+        //First task. Add a header and add rows. The addHeader and addRow functions work with up to 4 parameters, but more can be added easily with a little tweak in the js.
+        var schoolsGrid = controls.getGridView("#grid-view-holder");
+        schoolsGrid.addHeader("Name", "Location", "Total Students", "Specialty");
+        schoolsGrid.addRow("PMG", "Burgas", "400", "Math");
+        schoolsGrid.addRow("TUES", "Sofia", 500, "IT");
+        //Second task. Add nested grids.After adding header add atleast one row.
+        var academy = schoolsGrid.addRow("Telerik Academy", "Sofia", 5000, "IT");
+        academy.addHeader("Title", "Start Date", "Total Students");
+        academy.addRow("JS 2", "11-april-2013", 400);
+        var seo = academy.addRow("SEO", "15-may-2013", 1300);
+        academy.addRow("Slice and Dice", "05-april-2013", 500);
+        seo.addHeader("Pecata", "Pe6un", "Petromir", "Pepi");
+        seo.addRow("Pecanov", "Pe6unov", "Petromirov","Pepiev");
+        schoolsGrid.render();
+        //for task 3 click the last TD item of the row you chose to nest grids. If you click another td its next sibling will disappear. Click the one you clicked again and its sibling will appear. It is a bit ugly but ... 
+    </script>
+</body>
+</html>
